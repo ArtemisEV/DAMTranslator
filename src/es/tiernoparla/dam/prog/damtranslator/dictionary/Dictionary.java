@@ -24,6 +24,7 @@ public class Dictionary {
         dictionary.put(ES_WORD_4, WORD_4);
     }
 
+    // Translate the given word to its corresponding translated word, or return the word itself if not found in the dictionary
     public String translate(String word) {
         return dictionary.getOrDefault(word.toLowerCase(), word);
     }

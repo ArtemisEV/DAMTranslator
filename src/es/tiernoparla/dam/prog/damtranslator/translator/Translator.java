@@ -11,8 +11,11 @@ import java.util.StringTokenizer;
 import es.tiernoparla.dam.prog.damtranslator.dictionary.Dictionary;
 
 public class Translator {
+
+    // The prefix for the translated file name
     public static final String PREFIX = "ES_";
 
+    // The dictionary used for translations
     private Dictionary dictionary;
 
     public Translator(Dictionary dictionary) {
@@ -33,14 +36,20 @@ public class Translator {
 
             String line;
             while ((line = reader.readLine()) != null) {
+                // Split the line into words using a StringTokenizer
                 StringTokenizer tokenizer = new StringTokenizer(line, " ");
                 while (tokenizer.hasMoreTokens()) {
+                    // Get the next word
                     String word = tokenizer.nextToken();
+
+                    // Translate the word using the dictionary
                     String translatedWord = dictionary.translate(word);
 
+                    // Write the translated word to the output file
                     writer.write(translatedWord + " ");
                 }
 
+                // Write a newline character to separate lines
                 writer.newLine();
             }
 
