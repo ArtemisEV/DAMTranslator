@@ -1,6 +1,6 @@
 package es.tiernoparla.dam.prog.damtranslator.dictionary;
 
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.Map;
 
 public class Dictionary {
@@ -16,12 +16,8 @@ public class Dictionary {
 
     private Map<String, String> dictionary;
 
-    public Dictionary() {
-        dictionary = new HashMap<>();
-        dictionary.put(ES_WORD_1, WORD_1);
-        dictionary.put(ES_WORD_2, WORD_2);
-        dictionary.put(ES_WORD_3, WORD_3);
-        dictionary.put(ES_WORD_4, WORD_4);
+    public Dictionary(String filePath, String separator) throws IOException {
+        dictionary = DictionaryLoader.loadDictionary(filePath, separator);
     }
 
     // Translate the given word to its corresponding translated word, or return the word itself if not found in the dictionary

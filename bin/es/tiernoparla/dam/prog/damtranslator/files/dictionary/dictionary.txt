@@ -1,0 +1,4 @@
+hola,hello
+mi,my
+apellido,last name
+es,is
