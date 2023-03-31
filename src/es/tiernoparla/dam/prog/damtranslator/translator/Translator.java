@@ -1,9 +1,9 @@
 package es.tiernoparla.dam.prog.damtranslator.translator;
 
-import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import es.tiernoparla.dam.prog.damtranslator.dictionary.Dictionary;
@@ -29,25 +29,25 @@ public class Translator {
             File translatedFile = new File(translatedFileDirectory);
 
             FileInputStream fis = new FileInputStream(originalFile);
-            byte[] data = new byte[(int) originalFile.length()];
-            fis.read(data);
+            byte[] data = fis.readAllBytes();
             fis.close();
 
             String content = new String(data, "UTF-8");
-
             String[] words = content.split("\\s+");
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(translatedFile));
-
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
             for (String word : words) {
                 // Translate the word using the dictionary
                 String translatedWord = dictionary.translate(word);
 
-                // Write the translated word to the output file
-                writer.write(translatedWord + " ");
+                // Write the translated word to the output stream
+                baos.write(translatedWord.getBytes());
+                baos.write(' ');
             }
 
-            writer.close();
+            FileOutputStream fout = new FileOutputStream(translatedFile);
+            fout.write(baos.toByteArray());
+            fout.close();
 
         } catch (IOException e) {
             e.printStackTrace();
