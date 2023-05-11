@@ -1,4 +1,5 @@
-hello,hola
-my,mi
-last name,apellido
-is,es
+roses,Las rosas
+are,son
+red,rojas
+violets,Las violetas
+blue,azules
