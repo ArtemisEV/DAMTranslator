@@ -56,13 +56,5 @@ public class App {
                 System.out.println(MSG_ERROR_2);
                 break;
         }
-        /*
-         * Scanner sc = new Scanner(System.in);
-         * String fileName = sc.nextLine();
-         * 
-         * String filePath = FOLDER_PATH + fileName;
-         * 
-         * translator.translate(filePath, FOLDER_PATH);
-         */
     }
 }
